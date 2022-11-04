@@ -1,26 +1,42 @@
 #include <stdio.h>
 #include <string.h>
+char stack[100001];
+int top=-1;
+void push(char x){
+    stack[++top]=x;
+}
+void pop_print(){
+    printf("%c",stack[top]);
+    top--;
+}
+void print(){
+    while(top!=-1){
+        printf("%c",stack[top]);
+        top--;
+    }
+}
 int main(){
     char arr[100001];
-    int top=0;
-    int flag=0;
-    fgets(arr,100001,stdin);
-    int len = strlen(arr);
-    for(int i=0;i<len;i++){
-        if(flag==0){
-            if(arr[i]==' ' || arr[i]=='\n' || arr[i]=='<'){
-            for(int j=i-1;j>=top;j--){
-                printf("%c",arr[j]);
+    int bool=0;
+    scanf("%[^\n]s",arr);
+    for(int i=0;arr[i];i++){
+        if(arr[i]=='<'){ // 열렸을때
+            while(arr[i]!='>'){
+                print();
+                while(1){
+                    printf("%c",arr[i]);
+                    if(arr[i]=='>') break;
+                    i++;
+                }
             }
-            if(arr[i]==32){printf(" ");}
-            top=i+1;
         }
+        else if(arr[i]==' '){
+            print();
+            printf(" ");
         }
-        if(arr[i]=='<'){flag=2;}
-        if(flag==2){
-            printf("%c",arr[i]);
+        else{
+            push(arr[i]);
         }
-        if(flag==2 && arr[i]=='>') {flag=0; top=i+1;}
     }
-    
+    print();
 }
