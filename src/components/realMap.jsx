@@ -1,5 +1,6 @@
-import React from "react";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import { shipLocation } from "../apis/shipLocation";
+import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
 import { googleMapUrl } from "../asset/googleMapUrl";
 
 const myStyles = [
@@ -16,11 +17,24 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523,
+  lat: 0,
+  lng: 0,
 };
 
 function Map() {
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    shipLocation()
+      .then((res) => {
+        setLocation(res.data);
+      })
+      .catch((err) => {
+        alert("Error");
+        console.error(err);
+      });
+  }, []);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: `${googleMapUrl}`,
@@ -45,14 +59,27 @@ function Map() {
       mapContainerStyle={containerStyle}
       center={center}
       zoom={10}
-      onLoad={onLoad}
       onUnmount={onUnmount}
       options={{
         disableDefaultUI: true,
         styles: myStyles,
         libraries: ["places"],
         language: "ja",
-      }}></GoogleMap>
+      }}>
+      {location && (
+        <MarkerF
+          onLoad={onLoad}
+          position={{
+            lat: `${location.latitude}`,
+            lng: `${location.longitude}`,
+          }}
+          icon={{
+            url: "imgs/cargo-ship.png",
+            scaledSize: new window.google.maps.Size(32, 32),
+          }}
+        />
+      )}
+    </GoogleMap>
   ) : (
     <></>
   );
