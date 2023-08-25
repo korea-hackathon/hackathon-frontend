@@ -39,6 +39,7 @@ const Body = styled.div`
   width: 100vw;
   height: 40px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+  background-color: white;
 `;
 
 const LogoStyle = styled.img`
