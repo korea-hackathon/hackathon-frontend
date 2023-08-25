@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { shipLocation } from "../apis/shipLocation";
-import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
+import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { googleMapUrl } from "../asset/googleMapUrl";
+import { shipLocation } from "../apis/shipLocation";
 
 const myStyles = [
   {
@@ -30,9 +30,22 @@ function Map() {
         setLocation(res.data);
       })
       .catch((err) => {
-        alert("Error");
         console.error(err);
+        alert("Error");
       });
+    setInterval(() => {
+      shipLocation()
+        .then((res) => {
+          setLocation(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Error");
+        });
+    }, 60000);
+    return () => {
+      clearInterval();
+    };
   }, []);
 
   const { isLoaded } = useJsApiLoader({
@@ -59,26 +72,21 @@ function Map() {
       mapContainerStyle={containerStyle}
       center={center}
       zoom={10}
+      onLoad={onLoad}
       onUnmount={onUnmount}
-      options={{
-        disableDefaultUI: true,
-        styles: myStyles,
-        libraries: ["places"],
-        language: "ja",
-      }}>
-      {location && (
+      options={{ disableDefaultUI: true, styles: myStyles }}>
+      {location ? (
         <MarkerF
-          onLoad={onLoad}
           position={{
-            lat: `${location.latitude}`,
-            lng: `${location.longitude}`,
+            lat: parseFloat(location.latitude),
+            lng: parseFloat(location.longitude),
           }}
           icon={{
             url: "imgs/cargo-ship.png",
             scaledSize: new window.google.maps.Size(32, 32),
           }}
         />
-      )}
+      ) : null}
     </GoogleMap>
   ) : (
     <></>
