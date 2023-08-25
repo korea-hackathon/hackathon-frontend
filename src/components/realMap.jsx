@@ -47,10 +47,12 @@ function Map() {
       zoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
-      options={{ disableDefaultUI: true, styles: myStyles }}>
-      {/* Child components, such as markers, info windows, etc. */}
-      <></>
-    </GoogleMap>
+      options={{
+        disableDefaultUI: true,
+        styles: myStyles,
+        libraries: ["places"],
+        language: "ja",
+      }}></GoogleMap>
   ) : (
     <></>
   );
