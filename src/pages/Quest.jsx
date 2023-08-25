@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Mappp from "../components/mappp";
+import Map from "../components/realMap";
 import RealHeader from "../components/RealHeader";
 
 function Quest() {
@@ -8,7 +8,7 @@ function Quest() {
     <>
       <RealHeader />
       <Body>
-        <Mappp></Mappp>
+        <Map />
       </Body>
     </>
   );
