@@ -8,17 +8,18 @@ export const Login = () => {
       setStart(false);
     }
   };
+
   return (
     <Wrapper>
-      <Modal Start={start} onClick={clickModal} id='Modal'>
+      <Modal Start={start} onClick={clickModal} id="Modal">
         {start ? (
           <Container>
             <Logo>
-              <img src='/imgs/LogoBack.svg' alt='' />
+              <img src="/imgs/LogoBack.svg" alt="" />
             </Logo>
             <Inputs>
-              <Input type='text' placeholder='아이디를 입력하세요' />
-              <Input type='password' placeholder='비밀번호를 입력하세요' />
+              <Input type="text" placeholder="아이디를 입력하세요" />
+              <Input type="password" placeholder="비밀번호를 입력하세요" />
             </Inputs>
             <Enter>로그인</Enter>
           </Container>
