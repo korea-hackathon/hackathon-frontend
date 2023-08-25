@@ -1,42 +1,49 @@
-import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import { useState } from "react";
+import styled, { keyframes } from "styled-components";
 
 export const Login = () => {
   const [start, setStart] = useState(false);
   const clickModal = (e) => {
-    if(e.target.id==="Modal") {
-      setStart(false)
+    if (e.target.id === "Modal") {
+      setStart(false);
     }
-  }
+  };
 
-  return <Wrapper>
-    <Modal Start={start} onClick={clickModal} id="Modal">
-      { 
-        start ? <Container>
-        <Logo>
-          <h1>SQZ</h1>
-          <h2>Ship Quest Guide</h2>
-        </Logo>
-        <Inputs>
-          <Input type="text" placeholder="아이디를 입력하세요" />
-          <Input type="password" placeholder="비밀번호를 입력하세요" />
-        </Inputs>
-        <Enter>로그인</Enter>
-      </Container>
-      : <Start>
-        <div>
-          <h1>내 선박 정보,<br />SQZ에서 확인하세요!</h1>
-          <h2>Ship Quest Guide</h2>
-        </div>
-        <button onClick={() => setStart(true)}>지금 바로 시작하기</button>
-      </Start>
-      }
-    </Modal>
-    <Wave1 />
-    <Wave2 />
-    <Wave3 />
-  </Wrapper>
-}
+  return (
+    <Wrapper>
+      <Modal Start={start} onClick={clickModal} id='Modal'>
+        {start ? (
+          <Container>
+            <Logo>
+              <h1>SQZ</h1>
+              <h2>Ship Quest Guide</h2>
+            </Logo>
+            <Inputs>
+              <Input type='text' placeholder='아이디를 입력하세요' />
+              <Input type='password' placeholder='비밀번호를 입력하세요' />
+            </Inputs>
+            <Enter>로그인</Enter>
+          </Container>
+        ) : (
+          <Start>
+            <div>
+              <h1>
+                내 선박 정보,
+                <br />
+                SQZ에서 확인하세요!
+              </h1>
+              <h2>Ship Quest Guide</h2>
+            </div>
+            <button onClick={() => setStart(true)}>지금 바로 시작하기</button>
+          </Start>
+        )}
+      </Modal>
+      <Wave1 />
+      <Wave2 />
+      <Wave3 />
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,13 +52,13 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   background-color: rgba(88, 202, 255, 0.8);
-`
+`;
 
 const move = keyframes`
 	100% {
 		transform: rotate(360deg);
   }
-`
+`;
 
 const Wave1 = styled.div`
   z-index: 1;
@@ -62,9 +69,10 @@ const Wave1 = styled.div`
   border-radius: 40%;
   background-color: rgba(54, 191, 255, 0.8);
   animation: ${move} 4s infinite linear;
-`
+`;
 
-const Wave2 = styled.div` //첫 색 (제일 진한거)
+const Wave2 = styled.div`
+  //첫 색 (제일 진한거)
   z-index: 2;
   top: -377%;
   width: 4000px;
@@ -73,9 +81,10 @@ const Wave2 = styled.div` //첫 색 (제일 진한거)
   border-radius: 46%;
   background-color: rgba(14, 183, 250, 0.8);
   animation: ${move} 5s infinite linear;
-`
+`;
 
-const Wave3 = styled.div` //하얀색
+const Wave3 = styled.div`
+  //하얀색
   z-index: 4;
   top: -390%;
   width: 4000px;
@@ -85,18 +94,19 @@ const Wave3 = styled.div` //하얀색
   background-color: white;
   border: 3px solid lightgray;
   animation: ${move} 6s infinite linear;
-`
+`;
 
-const Modal = styled.div` // 배경 어둡게
+const Modal = styled.div`
+  // 배경 어둡게
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 5;
   width: 100%;
   height: 100vh;
-  background-color: ${(props) => props.Start && 'rgba(0, 0, 0, 0.5)'};
+  background-color: ${(props) => props.Start && "rgba(0, 0, 0, 0.5)"};
   transition: 0.2s;
-`
+`;
 
 const Container = styled.div`
   display: flex;
@@ -108,12 +118,12 @@ const Container = styled.div`
   background-color: white;
   border-radius: 15px;
   transition: 0.2s;
-`
+`;
 
 const Logo = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Inputs = styled.div`
   width: 100%;
@@ -125,11 +135,11 @@ const Inputs = styled.div`
     width: 80%;
     height: 30px;
   }
-`
+`;
 
 const Input = styled.input`
   border-bottom: 1px solid black;
-`
+`;
 
 const Start = styled.div`
   display: flex;
@@ -149,6 +159,7 @@ const Start = styled.div`
     font-weight: bolder;
     &:hover {
       background-color: lightgray;
+      transform: scale(1.02);
       transition: 0.2s;
     }
   }
@@ -161,7 +172,7 @@ const Start = styled.div`
       color: gray;
     }
   }
-`
+`;
 
 const Enter = styled.button`
   width: 70%;
@@ -177,4 +188,4 @@ const Enter = styled.button`
     background-color: gray;
     transition: 0.2s;
   }
-`
+`;
