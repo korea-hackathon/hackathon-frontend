@@ -2,6 +2,14 @@ import React from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { googleMapUrl } from "../asset/googleMapUrl";
 
+const myStyles = [
+  {
+    featureType: "poi",
+    elementType: "labels",
+    stylers: [{ visibility: "off" }],
+  },
+];
+
 const containerStyle = {
   width: "100vw",
   height: "100vh",
@@ -39,7 +47,8 @@ function Map() {
       center={center}
       zoom={10}
       onLoad={onLoad}
-      onUnmount={onUnmount}>
+      onUnmount={onUnmount}
+      options={{ disableDefaultUI: true, styles: myStyles }}>
       {/* Child components, such as markers, info windows, etc. */}
       <></>
     </GoogleMap>

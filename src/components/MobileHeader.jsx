@@ -16,7 +16,7 @@ function MobileHeader() {
   return (
     <>
       <FixedBtn onClick={onOpen}>
-        <img src="imgs/Vector.svg" />
+        <img src='imgs/Vector.svg' />
       </FixedBtn>
       <LeftMenu menu={menu}></LeftMenu>
       {menu && <BackGround onClick={onClose}></BackGround>}
@@ -39,6 +39,7 @@ const FixedBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.25);
 `;
 
 const LeftMenu = styled.div`
