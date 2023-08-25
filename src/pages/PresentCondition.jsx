@@ -7,11 +7,20 @@ import Header from "../components/Header";
 const PContainer = styled.div`
   width: 360px;
   height: 800px;
+  background: linear-gradient(
+    180deg,
+    rgba(169, 198, 255, 0.7) 0%,
+    rgba(0, 73, 216, 0.74) 100%
+  );
 `;
 
 const LContainer = styled.div`
   width: 800px;
   height: 360px;
+  background: var(
+    --background,
+    linear-gradient(180deg, #cdf3ff 0%, #86b6ff 100%, #86b6ff 100%)
+  );
 `;
 
 function PresentCondition() {
@@ -37,14 +46,13 @@ function PresentCondition() {
 
   return (
     <>
-      <GlobalStyle />
       {isPortrait ? (
         <PContainer>
-          <Header page="precondition" />
+          <Header page="precondition" mode="port" />
         </PContainer>
       ) : (
         <LContainer>
-          <Header page="landscape" />
+          <Header page="precondition" mode="land" />
         </LContainer>
       )}
     </>
