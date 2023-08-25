@@ -1,1 +1,1 @@
-export const baseUrl = "https://hackathon.mukgen.info";
+export const baseUrl = "http://15.164.225.74:8080";
