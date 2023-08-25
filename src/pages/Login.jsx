@@ -60,13 +60,8 @@ const Wave1 = styled.div`
   position: absolute;
   border-radius: 45%;
   background-color: rgba(54, 191, 255, 0.8);
-<<<<<<< HEAD
   animation: ${move} 3s infinite linear;
 `
-=======
-  animation: ${move} 4s infinite linear;
-`;
->>>>>>> d05d70299b30d4e786dda88e799bf4ddb1a197b5
 
 const Wave2 = styled.div`
   //첫 색 (제일 진한거)
@@ -122,15 +117,11 @@ const Container = styled.div`
 const Logo = styled.div`
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   & > img {
     width: 100px;
     height: 100px;
   }
 `
-=======
-`;
->>>>>>> d05d70299b30d4e786dda88e799bf4ddb1a197b5
 
 const Inputs = styled.div`
   width: 100%;
