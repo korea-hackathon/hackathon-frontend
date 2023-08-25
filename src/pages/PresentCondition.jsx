@@ -40,11 +40,11 @@ function PresentCondition() {
       <GlobalStyle />
       {isPortrait ? (
         <PContainer>
-          <Header page="precondition" />
+          <Header page="precondition" mode="port" />
         </PContainer>
       ) : (
         <LContainer>
-          <Header page="landscape" />
+          <Header page="precondition" mode="land" />
         </LContainer>
       )}
     </>
