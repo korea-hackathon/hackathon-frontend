@@ -9,7 +9,7 @@ function Header(props) {
         <Body flex={true}>
           <LogoStyle src="imgs/conditionLogo.png" alt="logo" />
           <NowMenu>이동현황</NowMenu>
-          <Homebutton mode={"prec"} href="/">
+          <Homebutton mode={"prec"} href="/Main">
             <img src="imgs/home.png" alt="homeIcon" width={"24px"} />
           </Homebutton>
         </Body>
@@ -20,7 +20,7 @@ function Header(props) {
           <LogoStyle src="imgs/conditionLogo.png" alt="logo" />
           <Line />
           <NowMenu>이동현황</NowMenu>
-          <Homebutton mode={"land"} href="/">
+          <Homebutton mode={"land"} href="/Main">
             <img src="imgs/home.png" alt="homeIcon" width={"24px"} />
           </Homebutton>
         </Body>

@@ -60,7 +60,7 @@ const Mappp = () => {
   }, []);
 
   return (
-    <div ref={ref} id='map' style={{ width: "400px", height: "400px" }}></div>
+    <div ref={ref} id="map" style={{ width: "400px", height: "400px" }}></div>
   );
 };
 
