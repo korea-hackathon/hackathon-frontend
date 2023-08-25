@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import { Wrapper } from "@googlemaps/react-wrapper";
 import Mappp from "../components/mappp";
 import MobileHeader from "../components/MobileHeader";
 
@@ -10,9 +9,7 @@ function Quest() {
     <>
       <MobileHeader />
       <Body>
-        <Wrapper>
-          <Mappp />
-        </Wrapper>
+        <Mappp></Mappp>
       </Body>
     </>
   );
