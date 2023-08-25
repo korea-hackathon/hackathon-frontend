@@ -21,7 +21,6 @@ const center = {
 };
 
 function Map() {
-  console.log(googleMapUrl);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: `${googleMapUrl}`,
