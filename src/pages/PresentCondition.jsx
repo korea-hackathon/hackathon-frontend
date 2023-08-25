@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { css } from "styled-components";
 import GlobalStyle from "../style/GlobalStyle";
 import Header from "../components/Header";
+import MobileHeader from "../components/MobileHeader";
 
 const PContainer = styled.div`
   width: 360px;
@@ -48,11 +49,11 @@ function PresentCondition() {
     <>
       {isPortrait ? (
         <PContainer>
-          <Header page="precondition" mode="port" />
+          <MobileHeader page="precondition" mode="port" />
         </PContainer>
       ) : (
         <LContainer>
-          <Header page="precondition" mode="land" />
+          <MobileHeader page="precondition" mode="land" />
         </LContainer>
       )}
     </>
