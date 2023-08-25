@@ -46,9 +46,5 @@ jobs:
           aws-region: ap-northeast-2
 
       # S3에 build 파일을 올립니다.
-      - name: Upload to S3
-        env:
-          BUCKET_NAME: hackathon
-        run: |
-          aws s3 sync \
-            ./build s3://hackathon
+      - name: Upload on S3
+        run: aws s3 sync build/ s3://${{ secrets.AWS_S3_BUCKET }} --acl public-read
