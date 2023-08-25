@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 function MobileHeader() {
   const [menu, setMenu] = useState(false);
+  const location = useLocation();
 
   const onOpen = () => {
     setMenu(true);
@@ -11,7 +13,6 @@ function MobileHeader() {
   const onClose = () => {
     setMenu(false);
   };
-
   return (
     <>
       <FixedBtn onClick={onOpen}>
@@ -38,6 +39,7 @@ const FixedBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.25);
 `;
 
 const LeftMenu = styled.div`

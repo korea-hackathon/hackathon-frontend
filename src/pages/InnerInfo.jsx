@@ -1,19 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import Map from "../components/realMap";
+import Header from "../components/Header";
+import MobileHeader from "../components/MobileHeader";
 import RealHeader from "../components/RealHeader";
 
-function Quest() {
+const InnerInfo = () => {
   return (
     <>
       <RealHeader />
-      <Body>
-        <Map />
-      </Body>
     </>
   );
-}
+};
 
-export default Quest;
-
-const Body = styled.div``;
+export default InnerInfo;

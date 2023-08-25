@@ -1,32 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { css } from "styled-components";
+import { useLocation } from "react-router-dom";
 
-function Header(props) {
-  if (props.page === "precondition") {
-    if (props.mode === "port") {
-      return (
-        <Body flex={true}>
-          <LogoStyle src="imgs/conditionLogo.png" alt="logo" />
-          <NowMenu>이동현황</NowMenu>
-          <Homebutton mode={"prec"} href="/">
-            <img src="imgs/home.png" alt="homeIcon" width={"24px"} />
-          </Homebutton>
-        </Body>
-      );
-    } else if (props.mode === "land") {
-      return (
-        <Body flex={true}>
-          <LogoStyle src="imgs/conditionLogo.png" alt="logo" />
-          <Line />
-          <NowMenu>이동현황</NowMenu>
-          <Homebutton mode={"land"} href="/">
-            <img src="imgs/home.png" alt="homeIcon" width={"24px"} />
-          </Homebutton>
-        </Body>
-      );
-    }
+function Header() {
+  const location = useLocation();
+  console.log(location.pathname);
+  if (location.pathname === "/condition") {
+    return (
+      <Body flex={true}>
+        <LogoStyle src="imgs/conditionLogo.png" alt="logo" />
+        <Line />
+        <NowMenu>이동현황</NowMenu>
+        <Homebutton mode={"land"} href="/Main">
+          <img src="imgs/home.png" alt="homeIcon" width={"24px"} />
+        </Homebutton>
+      </Body>
+    );
   }
+
   return <Body></Body>;
 }
 
@@ -34,7 +26,6 @@ export default Header;
 
 const Body = styled.div`
   display: ${({ flex }) => flex && "flex"};
-  justify-content: center;
   align-items: center;
   width: 100vw;
   height: 40px;
@@ -50,13 +41,7 @@ const LogoStyle = styled.img`
 const Homebutton = styled.a`
   width: 24px;
   margin: 8px;
-  margin-left: ${({ mode }) => {
-    if (mode === "prec") {
-      return "184px";
-    } else if (mode === "land") {
-      return "614px";
-    }
-  }};
+  margin-left: 1734px;
   height: 24px;
   border: 0;
   background-color: transparent;
