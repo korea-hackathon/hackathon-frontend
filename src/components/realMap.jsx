@@ -71,7 +71,6 @@ function Map() {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={{ disableDefaultUI: true, styles: myStyles }}>
