@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
   }
+  input {
+    border: 0;
+    outline: 0;
+  }
 `;
 
 export default GlobalStyle;
