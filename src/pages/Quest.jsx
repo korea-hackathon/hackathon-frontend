@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
 import Mappp from "../components/mappp";
-import MobileHeader from "../components/MobileHeader";
+import RealHeader from "../components/RealHeader";
 
 function Quest() {
   return (
     <>
-      <MobileHeader />
+      <RealHeader />
       <Body>
         <Mappp></Mappp>
       </Body>
