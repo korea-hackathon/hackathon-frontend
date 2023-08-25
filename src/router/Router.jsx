@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import QuestPage from "../pages/QuestPage";
+import MainPage from "../pages/MainPage";
 import PresentCondition from "../pages/PresentCondition";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/quest" element={<QuestPage />} />
-        <Route path="/Condition" element={<PresentCondition />} />
+        <Route path='/' element={<MainPage />} />
+        <Route path='/Condition' element={<PresentCondition />} />
       </Routes>
     </BrowserRouter>
   );
