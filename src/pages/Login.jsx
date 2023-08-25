@@ -14,8 +14,7 @@ export const Login = () => {
       { 
         start ? <Container>
         <Logo>
-          <h1>SQZ</h1>
-          <h2>Ship Quest Guide</h2>
+          <img src="/imgs/LogoBack.svg" alt="" />
         </Logo>
         <Inputs>
           <Input type="text" placeholder="아이디를 입력하세요" />
@@ -26,9 +25,9 @@ export const Login = () => {
       : <Start>
         <div>
           <h1>내 선박 정보,<br />SQZ에서 확인하세요!</h1>
-          <h2>Ship Quest Guide</h2>
+          <h2>Lorem Ipsum Dollar 122345<br />54321 Dollar Ipsum Lorem</h2>
         </div>
-        <button onClick={() => setStart(true)}>지금 바로 시작하기</button>
+        <button onClick={() => setStart(true)}>지금 바로 시작하세요!</button>
       </Start>
       }
     </Modal>
@@ -55,18 +54,18 @@ const move = keyframes`
 
 const Wave1 = styled.div`
   z-index: 1;
-  top: -360%;
+  top: -350%;
   width: 4000px;
   height: 4000px;
   position: absolute;
-  border-radius: 40%;
+  border-radius: 45%;
   background-color: rgba(54, 191, 255, 0.8);
-  animation: ${move} 4s infinite linear;
+  animation: ${move} 3s infinite linear;
 `
 
 const Wave2 = styled.div` //첫 색 (제일 진한거)
   z-index: 2;
-  top: -377%;
+  top: -370%;
   width: 4000px;
   height: 4000px;
   position: absolute;
@@ -77,7 +76,7 @@ const Wave2 = styled.div` //첫 색 (제일 진한거)
 
 const Wave3 = styled.div` //하얀색
   z-index: 4;
-  top: -390%;
+  top: -380%;
   width: 4000px;
   height: 4000px;
   position: absolute;
@@ -103,6 +102,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  box-sizing: border-box;
+  padding: 40px;
   width: 30%;
   height: 80%;
   background-color: white;
@@ -113,6 +114,10 @@ const Container = styled.div`
 const Logo = styled.div`
   display: flex;
   flex-direction: column;
+  & > img {
+    width: 100px;
+    height: 100px;
+  }
 `
 
 const Inputs = styled.div`
@@ -121,9 +126,12 @@ const Inputs = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 100px;
+  margin: 0;
   & > input {
     width: 80%;
     height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
   }
 `
 
@@ -134,15 +142,21 @@ const Input = styled.input`
 const Start = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 70%;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  gap: 50px;
+  /* padding-bottom: 300px; */
   & > button {
     border: none;
-    height: 50px;
+    width: 80%;
+    height: 80px;
     border-radius: 10px;
     background-color: white;
+    box-shadow: 0px 3px 4px gray;
     cursor: pointer;
     transition: 0.2s;
     font-size: 20px;
@@ -153,12 +167,14 @@ const Start = styled.div`
     }
   }
   & > div {
+    display: flex;
+    flex-direction: column;
     & > h1 {
-      font-size: 50px;
-    }
-    & > h2 {
-      font-size: 30px;
-      color: gray;
+      font-size: 65px;
+      margin: 0;
+      & > span {
+        color: rgb(14, 183, 250);
+      }
     }
   }
 `
@@ -173,6 +189,7 @@ const Enter = styled.button`
   box-shadow: 0px 3px 4px gray;
   font-size: 25px;
   font-weight: bolder;
+  margin: 0;
   &:hover {
     background-color: gray;
     transition: 0.2s;
