@@ -8,34 +8,46 @@ export const Login = () => {
       setStart(false);
     }
   };
-  ㄴ
-  return <Wrapper>
-    <Modal Start={start} onClick={clickModal} id="Modal">
-      { 
-        start ? <Container>
-        <Logo>
-          <img src="/imgs/LogoBack.svg" alt="" />
-        </Logo>
-        <Inputs>
-          <Input type="text" placeholder="아이디를 입력하세요" />
-          <Input type="password" placeholder="비밀번호를 입력하세요" />
-        </Inputs>
-        <Enter>로그인</Enter>
-      </Container>
-      : <Start>
-        <div>
-          <h1>내 선박 정보,<br />SQZ에서 확인하세요!</h1>
-          <h2>Lorem Ipsum Dollar 122345<br />54321 Dollar Ipsum Lorem</h2>
-        </div>
-        <button onClick={() => setStart(true)}>지금 바로 시작하세요!</button>
-      </Start>
-      }
-    </Modal>
-    <Wave1 />
-    <Wave2 />
-    <Wave3 />
-  </Wrapper>
-}
+  return (
+    <Wrapper>
+      <Modal Start={start} onClick={clickModal} id='Modal'>
+        {start ? (
+          <Container>
+            <Logo>
+              <img src='/imgs/LogoBack.svg' alt='' />
+            </Logo>
+            <Inputs>
+              <Input type='text' placeholder='아이디를 입력하세요' />
+              <Input type='password' placeholder='비밀번호를 입력하세요' />
+            </Inputs>
+            <Enter>로그인</Enter>
+          </Container>
+        ) : (
+          <Start>
+            <div>
+              <h1>
+                내 선박 정보,
+                <br />
+                SQZ에서 확인하세요!
+              </h1>
+              <h2>
+                Lorem Ipsum Dollar 122345
+                <br />
+                54321 Dollar Ipsum Lorem
+              </h2>
+            </div>
+            <button onClick={() => setStart(true)}>
+              지금 바로 시작하세요!
+            </button>
+          </Start>
+        )}
+      </Modal>
+      <Wave1 />
+      <Wave2 />
+      <Wave3 />
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,7 +73,7 @@ const Wave1 = styled.div`
   border-radius: 45%;
   background-color: rgba(54, 191, 255, 0.8);
   animation: ${move} 3s infinite linear;
-`
+`;
 
 const Wave2 = styled.div`
   //첫 색 (제일 진한거)
@@ -121,7 +133,7 @@ const Logo = styled.div`
     width: 100px;
     height: 100px;
   }
-`
+`;
 
 const Inputs = styled.div`
   width: 100%;
