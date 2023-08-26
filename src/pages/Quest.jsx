@@ -37,7 +37,7 @@ function Quest() {
     <>
       <NewHeader />
       <Body>
-        <Location arrow={arrow}>
+        <Location>
           {location && (
             <TextBox>
               <Text>위도 : {location.latitude} </Text>
@@ -66,6 +66,7 @@ const Location = styled.div`
   top: 10px;
   display: flex;
   align-items: center;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
 `;
 
 const Btn = styled.div`
