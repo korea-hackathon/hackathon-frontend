@@ -17,7 +17,8 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: Pretendard;
-    src: url(@assets/fonts/Pretendard-Regular.woff) format(woff);
+    font-weight: 400;
+    src: url(@assets/fonts/Pretendard-Regular.woff) format('font-woff');
   }
 `;
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import styled from "styled-components";
 import RealHeader from "../components/RealHeader";
 import LineConnectingDots from "../components/path/Line";
+import NewHeader from "../components/newHeader";
 
 const dotsArray = [
   { x: 90, y: 258 },
@@ -40,7 +41,7 @@ function PresentCondition() {
     return (
       <>
         <D_Container>
-          <RealHeader />
+          <NewHeader />
           <D_Body>
             <D_PathContainer>
               <LineConnectingDots dots={dotsArray} pShipPos={setPShip} />
