@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 function NewHeader() {
   const onLink = useNavigate();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <>
