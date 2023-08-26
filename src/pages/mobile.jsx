@@ -82,7 +82,7 @@ function Mobile() {
       </Top>
       <HelloText>
         <img src="imgs/hello.svg" />
-        <span>&nbsp;&nbsp;육기준 정비사</span>님 안녕하세요!
+        <span>&nbsp;&nbsp;정비사</span>님 안녕하세요!
       </HelloText>
       <Task>Task</Task>
       <TodoBox>
