@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router";
 import styled from "styled-components";
 
 function NewHeader() {
   const onLink = useNavigate();
+  const path = useLocation();
   const [open, setOpen] = useState(true);
+
+  useEffect(() => {
+    if (path.pathname == "/dashBoard") setOpen(false);
+  }, []);
+
+  console.log(path);
 
   return (
     <>
