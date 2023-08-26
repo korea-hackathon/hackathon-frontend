@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styled from "styled-components";
 import RealHeader from "../components/RealHeader";
 import LineConnectingDots from "../components/path/Line";
@@ -25,6 +25,17 @@ const dotsArray = [
 
 function PresentCondition() {
   const [PShip, setPShip] = useState({ x: dotsArray[0].x, y: dotsArray[0].y });
+  const memo = useMemo(() => {
+    console.log("memo");
+    return (
+      <D_DownContainer>
+        <D_StpText>출발지 : 서울</D_StpText>
+        <D_StpText>목적지 : 제주도</D_StpText>
+        <D_StpText>소요시간 : 1시간 30분</D_StpText>
+      </D_DownContainer>
+    );
+  }, []);
+
   if (matchMedia("screen and (min-width: 1024px)").matches) {
     return (
       <>
@@ -41,11 +52,7 @@ function PresentCondition() {
                 y={PShip.y}
               />
             </D_PathContainer>
-            <D_DownContainer>
-              <D_StpText>출발지 : 서울</D_StpText>
-              <D_StpText>목적지 : 제주도</D_StpText>
-              <D_StpText>소요시간 : 1시간 30분</D_StpText>
-            </D_DownContainer>
+            {memo}
           </D_Body>
         </D_Container>
       </>

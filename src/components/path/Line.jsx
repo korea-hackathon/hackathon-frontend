@@ -2,15 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
+const SvgPos = styled.svg`
+  position: absolute;
+  @keyframes dash {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+`;
+
 const LineConnectingDots = ({ dots, pShipPos }) => {
   const lineStyle = {
     stroke: "#1E6BC5",
     strokeWidth: 3,
+    strokeDasharray: 1,
+    strokeDashoffset: 1,
+    animation: "dash 5s linear alternate infinite",
   };
-
-  const SvgPos = styled.svg`
-    position: absolute;
-  `;
 
   const [animationProgress, setAnimationProgress] = useState(0);
 
@@ -31,13 +42,13 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
   const renderDotsAndLines = () => {
     const dotComponents = dots.map((dot, index) => (
       <circle
-        key={index}
+        key={index + "circle"}
         cx={dot.x}
         cy={dot.y}
         r={12.5}
         fill={animationProgress >= index ? "#fff" : "#fff"}
         stroke="#1E6BC5"
-        stroke-width="3"
+        strokeWidth="3"
       />
     ));
 
@@ -45,7 +56,7 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
     for (let i = 0; i < animationProgress; i++) {
       lineComponents.push(
         <line
-          key={i}
+          key={i + "line"}
           x1={dots[i].x}
           y1={dots[i].y}
           x2={dots[i + 1].x}
