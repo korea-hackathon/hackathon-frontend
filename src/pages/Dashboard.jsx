@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import NewHeader from "../components/newHeader";
 import PersonList from "../components/PersonList";
@@ -25,15 +25,28 @@ const Dashboard = () => {
     },
     {
       id: 2,
-      name: "육기준",
+      name: "육기2준",
       role: "Captain",
     },
     {
       id: 3,
-      name: "육기준",
+      name: "육기3준",
       role: "Captain",
     },
   ]);
+  const [arr, setArr] = useState([]);
+  
+  function returnPerson() {
+    for(let i = 0; i<users.length; i++) {
+      setTimeout(() => {
+        setArr(arr => [...arr, <PersonList key={i} Text={users[i].name} Role={users[i].role} />]);
+      }, 200 * i)
+    }
+  }
+
+  useEffect(() => {
+    returnPerson();
+  }, [])
 
   return (
     <>
@@ -153,9 +166,7 @@ const Dashboard = () => {
                 승무원 정보
               </Title>
               <div>
-                {users.map((user) => (
-                  <PersonList key={user.id} Text={user.name} Role={user.role} />
-                ))}
+                { arr }
               </div>
             </People>
             <Fan>
