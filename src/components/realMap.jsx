@@ -94,7 +94,8 @@ function Map() {
       center={center}
       onLoad={onLoad}
       onUnmount={onUnmount}
-      options={{ disableDefaultUI: true, styles: myStyles }}>
+      options={{ disableDefaultUI: true, styles: myStyles }}
+    >
       {location ? (
         <>
           <MarkerF
@@ -115,7 +116,7 @@ function Map() {
                     lng: parseFloat(element.longitude),
                   }}
                   icon={{
-                    url: "imgs/cargo-ship.png",
+                    url: "imgs/Ellipse.svg",
                     scaledSize: new window.google.maps.Size(32, 32),
                   }}
                 />
