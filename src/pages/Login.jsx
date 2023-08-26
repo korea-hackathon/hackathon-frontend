@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { css } from "styled-components";
 
 export const Login = () => {
   const [start, setStart] = useState(false);
+  const onLink = useNavigate();
   const clickModal = (e) => {
     if (e.target.id === "Modal") {
       setStart(false);
@@ -81,11 +82,32 @@ export const Login = () => {
             <option>항해사</option>
           </M_roleInput>
           <M_roleInputBorder></M_roleInputBorder>
+          <M_button
+            onClick={() => {
+              onLink("/mobile");
+            }}
+          >
+            로그인
+          </M_button>
         </M_flexBox>
       </M_Container>
     );
   }
 };
+
+const M_button = styled.div`
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 420px;
+  width: 320px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #8091e8;
+`;
 
 const M_Logo = styled.img`
   margin-top: 55px;
