@@ -48,12 +48,7 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
           y1={dots[i].y}
           x2={dots[i + 1].x}
           y2={dots[i + 1].y}
-          style={{
-            ...lineStyle,
-            stroke: animationProgress >= i ? "#B3DBFF" : "transparent",
-            transition: "stroke 1s linear",
-            // Apply transition to stroke property
-          }}
+          style={lineStyle}
         />
       );
     }

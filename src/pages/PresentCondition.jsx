@@ -34,6 +34,7 @@ function PresentCondition() {
             <D_PathContainer>
               <D_PathText>경로</D_PathText>
               <LineConnectingDots dots={dotsArray} pShipPos={setPShip} />
+              <D_PathFlag src="imgs/flag.svg" alt="깃발" />
               <D_PathShip
                 src="imgs/ship.png"
                 alt="배"
@@ -42,20 +43,9 @@ function PresentCondition() {
               />
             </D_PathContainer>
             <D_DownContainer>
-              <D_SttContainer>
-                <D_SltText>출항 시간</D_SltText>
-                <D_SldText>출항 일시</D_SldText>
-                <D_SldContent>2023-12-24 11:23:07</D_SldContent>
-                <D_VygtText>항해 시간</D_VygtText>
-                <D_vygtContent>09:24:49</D_vygtContent>
-              </D_SttContainer>
-              <D_EtaContainer>
-                <D_EtaText>도착 예상 시간</D_EtaText>
-                <D_EdtText>도착 예정 일시</D_EdtText>
-                <D_EdtContent>2023-12-25 00:04:24</D_EdtContent>
-                <D_RmtText>남은 시간</D_RmtText>
-                <D_RmtContent>03:16:28</D_RmtContent>
-              </D_EtaContainer>
+              <D_StpText>출발지 : 서울</D_StpText>
+              <D_StpText>목적지 : 제주도</D_StpText>
+              <D_StpText>소요시간 : 1시간 30분</D_StpText>
             </D_DownContainer>
           </D_Body>
         </D_Container>
@@ -91,10 +81,18 @@ const D_Container = styled.div`
 `;
 
 const D_DownContainer = styled.div`
-  width: 1920px;
-  height: 540px;
-  flex-shrink: 0;
-  background: #b3dbff;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  width: 1606px;
+  height: 370px;
+  position: absolute;
+  left: 157px;
+  top: 540px;
+  border-radius: 40px;
+  background: rgba(179, 219, 255, 0.71);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const D_PathText = styled.span`
@@ -113,7 +111,6 @@ const D_PathShip = styled.img`
   transition: left 1s ease-in-out, top 1s ease-in-out; /* Add a transition for smooth movement */
   left: ${(props) => `${props.x - 50}px`};
   top: ${(props) => `${props.y - 50}px`};
-  /* transition: 50ms linear; */
 `;
 
 const D_PathContainer = styled.div`
@@ -121,99 +118,23 @@ const D_PathContainer = styled.div`
   width: 1920px;
   height: 500px;
   flex-shrink: 0;
-  background: white;
+  background: #76beff;
 `;
 
-const D_SttContainer = styled.div`
-  left: 122px;
-  top: 547px;
-  width: 623px;
-  height: 417px;
-  flex-shrink: 0;
+const D_PathFlag = styled.img`
   position: absolute;
-  border-radius: 8px;
-  background: #b3dbff;
+  width: 86px;
+  height: 132px;
+  left: calc(1830px - 30px / 2);
+  top: calc(390px - 132px / 2);
 `;
 
-const D_SltText = styled.span`
+const D_StpText = styled.span`
   color: #000;
   font-family: Noto Serif KR;
-  font-size: 32px;
-  margin: 16px;
-`;
-
-const D_SldText = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  font-size: 24px;
-  width: 503px;
-`;
-
-const D_SldContent = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  font-size: 54px;
-`;
-
-const D_VygtText = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-
-const D_vygtContent = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  font-size: 54px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-
-const D_EtaText = styled.span`
-  display: inline-block;
-  font-family: "Noto Serif KR", serif;
-  font-size: 32px;
-`;
-
-const D_EtaContainer = styled.div`
-  left: 1175px;
-  top: 547px;
-  width: 623px;
-  height: 417px;
-  flex-shrink: 0;
-  position: absolute;
-  border-radius: 8px;
-  background: #b3dbff;
-`;
-
-const D_EdtText = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  width: 503px;
-  font-size: 24px;
-`;
-
-const D_EdtContent = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  font-size: 54px;
-`;
-
-const D_RmtText = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  font-size: 24px;
-  margin-top: 7px;
-`;
-
-const D_RmtContent = styled.div`
-  color: #000;
-  font-family: Noto Serif KR;
-  font-size: 54px;
+  font-size: 40px;
+  left: 88px;
+  position: relative;
 `;
 
 const M_Container = styled.div`
@@ -247,13 +168,4 @@ const M_EtaText = styled.span`
   margin-left: 70px;
   margin-top: 482px;
   position: absolute;
-`;
-
-const M_EtaContainer = styled.div`
-  width: 280px;
-  height: 147px;
-  background-color: white;
-  position: relative;
-  margin: 0 auto;
-  top: 613px;
 `;
