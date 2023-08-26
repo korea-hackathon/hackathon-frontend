@@ -4,32 +4,25 @@ import styled, { css } from "styled-components";
 function Mobile() {
   const [todo, setTodo] = useState([
     {
-      title: "M/E 점검",
-      content: "메인엔진부하가 90% 를 넘었습니다.",
-      type: true,
-      success: false,
-      id: 0,
-    },
-    {
       title: "연료, 오일 및 기타 보급품 충당",
       content: "연료를 채워주세요.",
       type: false,
       success: false,
-      id: 1,
+      id: 0,
     },
     {
       title: "선박 기계 수리, 교체",
       content: "이상이 있는 선박의 기계를 수리해 주세요",
       type: false,
       success: false,
-      id: 2,
+      id: 1,
     },
     {
       title: "정비계획서 작성",
       content: "정비계획서를 작성해 주세요",
       type: false,
       success: false,
-      id: 3,
+      id: 2,
     },
   ]);
 
@@ -47,6 +40,38 @@ function Mobile() {
       setTodo(filter);
     }, 1000);
 
+    clearTimeout();
+  };
+
+  const onClick = () => {
+    const newTodo = [
+      {
+        title: "M/E 점검",
+        content: "메인엔진부하가 90% 를 넘었습니다.",
+        type: true,
+        success: 3,
+        id: 3,
+      },
+      ...todo,
+    ];
+    setTodo(newTodo);
+    newTodo[0].success = 2;
+    setTodo([...newTodo]);
+    setTimeout(() => {
+      newTodo[0].success = 1;
+      setTodo([...newTodo]);
+    }, 1000);
+    setTimeout(() => {
+      newTodo[0].success = 4;
+      setTodo([...newTodo]);
+    }, 2000);
+    setTimeout(() => {
+      const filter = newTodo;
+      filter.map((element, index) => (element.id = index));
+      setTodo(filter);
+    }, 2300);
+    // newTodo[0].success = 4;
+    // setTodo([...newTodo]);
     clearTimeout();
   };
 
@@ -79,11 +104,17 @@ function Mobile() {
           </Todo>
         ))}
       </TodoBox>
+      <Bottom onClick={onClick}></Bottom>
     </Body>
   );
 }
 
 export default Mobile;
+
+const Bottom = styled.div`
+  width: 100vw;
+  height: 300px;
+`;
 
 const Body = styled.div`
   width: 100vw;
@@ -162,11 +193,14 @@ const Todo = styled.div`
   width: 324px;
   height: 94px;
   padding-bottom: 13px;
-  opacity: ${({ success }) => (success ? "0.5" : "1")};
-  transform: scale(${({ success }) => (success ? "0.9" : "1")});
+  opacity: ${({ success }) => (success && success != 4 ? "0.5" : "1")};
+  transform: scale(${({ success }) => (success && success != 4 ? "0.9" : "1")});
   left: ${({ success }) => (success == 2 ? "400px" : "0")};
+  right: ${({ success }) => (success == 3 ? "-400px" : "0")};
   transition: ${({ success }) =>
-    success ? css`0.2s ease-in-out, left 1s ease-in-out` : css`none`};
+    success && success != 3
+      ? css`0.2s ease-in-out, left 1s ease-in-out`
+      : css`none`};
 `;
 
 const TextBox = styled.div`
