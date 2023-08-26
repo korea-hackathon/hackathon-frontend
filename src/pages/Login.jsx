@@ -232,6 +232,7 @@ const DuckWrapper = styled.div`
 `;
 
 const Duck = styled.img`
+  margin-top: 170px;
   width: 200px;
   height: 200px;
   position: absolute;
@@ -249,7 +250,7 @@ const move = keyframes`
 
 const Wave1 = styled.div`
   z-index: 1;
-  top: -350%;
+  top: 293%;
   width: 4250px;
   height: 4250px;
   position: absolute;
@@ -261,7 +262,7 @@ const Wave1 = styled.div`
 const Wave2 = styled.div`
   //첫 색 (제일 진한거)
   z-index: 2;
-  top: -370%;
+  top: -303%;
   width: 4250px;
   height: 4250px;
   position: absolute;
@@ -273,7 +274,7 @@ const Wave2 = styled.div`
 const Wave3 = styled.div`
   //하얀색
   z-index: 4;
-  top: -380%;
+  top: -313%;
   width: 4250px;
   height: 4250px;
   position: absolute;
@@ -342,7 +343,7 @@ const Start = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -351,9 +352,9 @@ const Start = styled.div`
   & > button {
     border: none;
     width: 80%;
-    height: 80px;
+    height: 150px;
     border-radius: 10px;
-    background-color: white;
+    background-color: whitesmoke;
     box-shadow: 0px 3px 4px gray;
     cursor: pointer;
     transition: 0.2s;
@@ -368,6 +369,7 @@ const Start = styled.div`
   & > div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     & > h1 {
       font-size: 65px;
       margin: 0;
