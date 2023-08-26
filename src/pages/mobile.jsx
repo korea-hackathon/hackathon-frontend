@@ -25,32 +25,11 @@ function Mobile() {
       id: 2,
     },
     {
-      title: "연료, 오일 및 기타 보급품 충당",
-      content: "연료를 채워주세요.",
+      title: "정비계획서 작성",
+      content: "정비계획서를 작성해 주세요",
       type: false,
       success: false,
       id: 3,
-    },
-    {
-      title: "선박 기계 수리, 교체",
-      content: "이상이 있는 선박의 기계를 수리해 주세요",
-      type: false,
-      success: false,
-      id: 4,
-    },
-    {
-      title: "연료, 오일 및 기타 보급품 충당",
-      content: "연료를 채워주세요.",
-      type: false,
-      success: false,
-      id: 5,
-    },
-    {
-      title: "선박 기계 수리, 교체F",
-      content: "이상이 있는 선박의 기계를 수리해 주세요",
-      type: false,
-      success: false,
-      id: 6,
     },
   ]);
 
@@ -80,13 +59,7 @@ function Mobile() {
         <img src="imgs/hello.svg" />
         <span>&nbsp;&nbsp;육기준 정비사</span>님 안녕하세요!
       </HelloText>
-      <Task
-        onClick={() => {
-          console.log(todo);
-        }}
-      >
-        Task
-      </Task>
+      <Task>Task</Task>
       <TodoBox>
         {todo.map((element) => (
           <Todo warn={element.type} success={element.success} key={element.id}>
@@ -159,7 +132,7 @@ const Task = styled.div`
 
 const TodoBox = styled.div`
   width: 330px;
-  height: 500px;
+  height: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
