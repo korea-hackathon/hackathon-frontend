@@ -1,34 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 function NewHeader() {
   const onLink = useNavigate();
+  const [open, setOpen] = useState(false);
 
   return (
-    <Body>
-      <MainBox>
-        <Img1 src='imgs/Logo.svg' />
-        <TitleBox>
-          <Title>SQG</Title>
-          <SubTitle>Ship Quest Guide</SubTitle>
-        </TitleBox>
-      </MainBox>
-      <DashBoardBox
+    <>
+      <Body open={open}>
+        <MainBox>
+          <Img1 src='imgs/Logo.svg' />
+          <TitleBox>
+            <Title>SQG</Title>
+            <SubTitle>Ship Quest Guide</SubTitle>
+          </TitleBox>
+        </MainBox>
+        <DashBoardBox
+          onClick={() => {
+            onLink("/dashBoard");
+          }}>
+          <Img2 src='imgs/DashBoard.svg' />
+          <div>대시보드</div>
+        </DashBoardBox>
+        <NavigatorBox
+          onClick={() => {
+            onLink("/condition");
+          }}>
+          <Img2 src='imgs/Group.svg' />
+          <div>이동 현황 표시</div>
+        </NavigatorBox>
+      </Body>
+      <Btn
         onClick={() => {
-          onLink();
-        }}>
-        <Img2 src='imgs/DashBoard.svg' />
-        <div>대시보드</div>
-      </DashBoardBox>
-      <NavigatorBox
-        onClick={() => {
-          onLink();
-        }}>
-        <Img2 src='imgs/Group.svg' />
-        <div>네비게이터</div>
-      </NavigatorBox>
-    </Body>
+          setOpen(!open);
+        }}
+        open={open}>
+        <Img2 src='imgs/right-arrow.png' open={open} />
+      </Btn>
+    </>
   );
 }
 
@@ -41,6 +51,8 @@ const Body = styled.div`
   background-color: white;
   box-shadow: 3px 0 5px 0px rgba(0, 0, 0, 0.25);
   z-index: 2;
+  left: ${({ open }) => (open ? "0px" : "-365px")};
+  transition: 0.5s ease-in-out;
 `;
 
 const MainBox = styled.div`
@@ -75,6 +87,7 @@ const Img2 = styled.img`
   width: 20px;
   height: 20px;
   margin-left: 10px;
+  transform: ${({ open }) => (open ? "rotate(180deg)" : "null")};
 `;
 
 const DashBoardBox = styled.div`
@@ -109,4 +122,20 @@ const NavigatorBox = styled.div`
     margin-left: 10px;
     font-size: 20px;
   }
+`;
+
+const Btn = styled.div`
+  cursor: pointer;
+  width: 50px;
+  height: 80px;
+  background-color: white;
+  border-radius: 0 0 15px 0;
+  position: fixed;
+  z-index: 3;
+  left: 360px;
+  left: ${({ open }) => (open ? "360px" : "-5px")};
+  transition: 0.5s ease-in-out;
+  box-shadow: 3px 0 5px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
 `;
