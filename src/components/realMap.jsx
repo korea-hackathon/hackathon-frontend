@@ -3,7 +3,6 @@ import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { googleMapUrl } from "../asset/googleMapUrl";
 import { shipLocation } from "../apis/shipLocation";
 import { danger } from "../apis/danger";
-import { element } from "prop-types";
 
 const myStyles = [
   {
@@ -86,6 +85,7 @@ function Map() {
 
   return isLoaded ? (
     <GoogleMap
+      defaultZoom={100}
       ref={mapRef}
       mapContainerStyle={containerStyle}
       center={center}

@@ -132,7 +132,7 @@ const Task = styled.div`
 
 const TodoBox = styled.div`
   width: 330px;
-  height: 32px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
