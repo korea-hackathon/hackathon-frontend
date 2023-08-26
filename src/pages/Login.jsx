@@ -176,14 +176,25 @@ const Wrapper = styled.div`
 
 const DuckAnimation2 = keyframes`
   0% {
-    transform: translateX(300px) translateY(100px);
+    transform: translateX(300px) translateY(50px) rotate(30deg);
   }
- 
+  25% {
+    transform: translateX(0px) translateY(50px) rotate(-30deg);
+  }
+  49% {
+    transform: translateX(-300px) translateY(50px) rotate(30deg);
+  }
   50% {
-    transform: translateX(-300px) translateY(0);
+    transform: translateX(-300px) translateY(50px) rotate(-30deg) rotateY(180deg);
+  }
+  75% {
+    transform: translateX(0px) translateY(50px) rotate(30deg) rotateY(180deg);
+  }
+  99% {
+    transform: translateX(300px) translateY(50px) rotate(-30deg) rotateY(180deg);
   }
   100% {
-    transform: translateX(300px) translateY(100px);
+    transform: translateX(300px) translateY(50px) rotate(30deg);
   }
 `;
 
