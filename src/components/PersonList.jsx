@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 function NewHeader({ Text, Role }) {
   return <Wrapper>
@@ -8,6 +8,15 @@ function NewHeader({ Text, Role }) {
 }
 
 export default NewHeader;
+
+const FadeIn = keyframes`
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+`
 
 const Wrapper = styled.div`
   width: 392.234px;
@@ -22,6 +31,7 @@ const Wrapper = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   justify-content: space-between;
+  animation: ${FadeIn} 0.5s;
   & > h1 {
     font-size: 22px;
   }
