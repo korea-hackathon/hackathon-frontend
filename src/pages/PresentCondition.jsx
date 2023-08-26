@@ -32,7 +32,6 @@ function PresentCondition() {
           <RealHeader />
           <D_Body>
             <D_PathContainer>
-              <D_PathText>경로</D_PathText>
               <LineConnectingDots dots={dotsArray} pShipPos={setPShip} />
               <D_PathFlag src="imgs/flag.svg" alt="깃발" />
               <D_PathShip
@@ -93,15 +92,6 @@ const D_DownContainer = styled.div`
   border-radius: 40px;
   background: rgba(179, 219, 255, 0.71);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-`;
-
-const D_PathText = styled.span`
-  display: inline-block;
-  font-family: "Noto Serif KR", serif;
-  font-size: 32px;
-  margin-left: 138px;
-  margin-top: 37px;
-  position: absolute;
 `;
 
 const D_PathShip = styled.img`
