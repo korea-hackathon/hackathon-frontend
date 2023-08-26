@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { googleMapUrl } from "../asset/googleMapUrl";
 import { shipLocation } from "../apis/shipLocation";
+import { danger } from "../apis/danger";
+import { element } from "prop-types";
 
 const myStyles = [
   {
@@ -23,6 +25,8 @@ const center = {
 
 function Map() {
   const [location, setLocation] = useState(null);
+  const [dangerZone, setDangerZone] = useState(null);
+  const mapRef = useRef(null);
 
   useEffect(() => {
     shipLocation()
@@ -40,12 +44,21 @@ function Map() {
         })
         .catch((err) => {
           console.error(err);
-          alert("Error");
         });
     }, 60000);
     return () => {
       clearInterval();
     };
+  }, []);
+
+  useEffect(() => {
+    danger()
+      .then((res) => {
+        setDangerZone(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   const { isLoaded } = useJsApiLoader({
@@ -67,24 +80,48 @@ function Map() {
     setMap(null);
   }, []);
 
+  const onFocus = () => {
+    mapRef.current.panTo({
+      lat: parseFloat(location.latitude),
+      lng: parseFloat(location.longitude),
+    });
+  };
+
   return isLoaded ? (
     <GoogleMap
+      ref={mapRef}
       mapContainerStyle={containerStyle}
       center={center}
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={{ disableDefaultUI: true, styles: myStyles }}>
       {location ? (
-        <MarkerF
-          position={{
-            lat: parseFloat(location.latitude),
-            lng: parseFloat(location.longitude),
-          }}
-          icon={{
-            url: "imgs/cargo-ship.png",
-            scaledSize: new window.google.maps.Size(32, 32),
-          }}
-        />
+        <>
+          <MarkerF
+            position={{
+              lat: parseFloat(location.latitude),
+              lng: parseFloat(location.longitude),
+            }}
+            icon={{
+              url: "imgs/cargo-ship.png",
+              scaledSize: new window.google.maps.Size(32, 32),
+            }}
+          />
+          {dangerZone
+            ? dangerZone.map((element) => (
+                <MarkerF
+                  position={{
+                    lat: parseFloat(element.latitude),
+                    lng: parseFloat(element.longitude),
+                  }}
+                  icon={{
+                    url: "imgs/cargo-ship.png",
+                    scaledSize: new window.google.maps.Size(32, 32),
+                  }}
+                />
+              ))
+            : null}
+        </>
       ) : null}
     </GoogleMap>
   ) : (
