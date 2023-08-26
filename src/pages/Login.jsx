@@ -115,9 +115,15 @@ const M_Logo = styled.img`
 `;
 
 const M_Container = styled.div`
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    rgba(255, 255, 255, 0.66) 33.85%,
+    rgba(255, 255, 255, 0.31) 69.27%,
+    #cad6ff 100%
+  );
   width: 100%;
   height: 100vh;
-  background-color: #252525;
 `;
 
 const RoleInput = styled.select`
@@ -146,7 +152,8 @@ const M_roleInput = styled.select`
   margin-top: 50px;
   border: none;
   border-radius: 0;
-  color: #b9b9b9;
+  color: #242377;
+  font-size: 18px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -170,7 +177,7 @@ const M_flexBox = styled.div`
 `;
 
 const M_SubText = styled.div`
-  color: #fff;
+  color: #242377;
   font-family: Pretendard Variable sans-serif;
   font-size: 12px;
   font-style: normal;
@@ -180,11 +187,12 @@ const M_SubText = styled.div`
 `;
 
 const M_nameInput = styled.input`
+  font-size: 18px;
   margin-top: 70px;
   width: 290px;
   border-bottom: 1px solid #b9b9b9;
   background-color: transparent;
-  color: white;
+  color: #242377;
 `;
 
 const Wrapper = styled.div`
@@ -248,7 +256,7 @@ const move = keyframes`
   }
 `;
 
-const Wave1 = styled.div``
+const Wave1 = styled.div``;
 
 const Wave2 = styled.div`
   //첫 색 (제일 진한거)
