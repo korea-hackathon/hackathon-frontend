@@ -18,20 +18,23 @@ const containerStyle = {
   height: "100vh",
 };
 
-const center = {
-  lat: 0,
-  lng: 0,
-};
-
 function Map() {
   const [location, setLocation] = useState(null);
   const [dangerZone, setDangerZone] = useState(null);
   const mapRef = useRef(null);
+  const [center, setCenter] = useState({
+    lat: 0,
+    lng: 0,
+  });
 
   useEffect(() => {
     shipLocation()
       .then((res) => {
         setLocation(res.data);
+        setCenter({
+          lat: parseFloat(res.data.latitude),
+          lng: parseFloat(res.data.longitude),
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -71,6 +74,7 @@ function Map() {
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
+    console.log(map.fitBounds(bounds));
     map.fitBounds(bounds);
 
     setMap(map);
@@ -79,13 +83,6 @@ function Map() {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
-
-  const onFocus = () => {
-    mapRef.current.panTo({
-      lat: parseFloat(location.latitude),
-      lng: parseFloat(location.longitude),
-    });
-  };
 
   return isLoaded ? (
     <GoogleMap
@@ -104,8 +101,8 @@ function Map() {
               lng: parseFloat(location.longitude),
             }}
             icon={{
-              url: "imgs/cargo-ship.png",
-              scaledSize: new window.google.maps.Size(32, 32),
+              url: "imgs/ship.svg",
+              scaledSize: new window.google.maps.Size(50, 50),
             }}
           />
           {dangerZone
@@ -116,7 +113,7 @@ function Map() {
                     lng: parseFloat(element.longitude),
                   }}
                   icon={{
-                    url: "imgs/Ellipse.svg",
+                    url: "imgs/exclamation.png",
                     scaledSize: new window.google.maps.Size(32, 32),
                   }}
                 />
