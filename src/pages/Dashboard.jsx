@@ -32,6 +32,8 @@ const Dashboard = () => {
             <img src="/imgs/Info.svg" alt="" />
             선박 정보
           </Title>
+          <img src="/imgs/Graph.svg" alt="" />
+          <div><h1>Departure</h1><h1>Arrival</h1></div>
         </ShipInfo>
         <Weather>
           <div>
@@ -340,7 +342,10 @@ const ShipInfo = styled.div`
   gap: 15px;
   font-weight: 500px;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
-  & > div:nth-child(2) {
+  & > div:nth-last-child(1) {
+    & > h1 {
+      font-size: 25px;
+    }
     display: flex;
     justify-content: space-between;
   }
