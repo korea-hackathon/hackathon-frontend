@@ -3,6 +3,7 @@ import { Login } from "../pages/Login";
 import Quest from "../pages/Quest";
 import AlramPage from "../pages/alram";
 import TodoPage from "../pages/todo";
+import Dashboard from "../pages/Dashboard";
 
 const Router = () => {
   return (
