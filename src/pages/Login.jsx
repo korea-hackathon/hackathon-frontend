@@ -55,9 +55,9 @@ export const Login = () => {
               <button onClick={() => setStart(true)}>
                 지금 바로 시작하세요!
               </button>
-              <DuckWrapper active={true}>
+              {/* <DuckWrapper active={true}>
                 <Duck src="./imgs/duck.png" alt="러버덕" />
-              </DuckWrapper>
+              </DuckWrapper> */}
             </Start>
           )}
         </Modal>
@@ -193,7 +193,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: rgba(88, 202, 255, 0.8);
+  background-color: #fff;
 `;
 
 const DuckAnimation2 = keyframes`
@@ -248,16 +248,7 @@ const move = keyframes`
   }
 `;
 
-const Wave1 = styled.div`
-  z-index: 1;
-  top: 293%;
-  width: 4250px;
-  height: 4250px;
-  position: absolute;
-  border-radius: 45%;
-  background-color: rgba(54, 191, 255, 0.8);
-  animation: ${move} 3s infinite linear;
-`;
+const Wave1 = styled.div``
 
 const Wave2 = styled.div`
   //첫 색 (제일 진한거)
@@ -267,7 +258,7 @@ const Wave2 = styled.div`
   height: 4250px;
   position: absolute;
   border-radius: 46%;
-  background-color: rgba(14, 183, 250, 0.8);
+  background-color: whitesmoke;
   animation: ${move} 5s infinite linear;
 `;
 
@@ -279,7 +270,7 @@ const Wave3 = styled.div`
   height: 4250px;
   position: absolute;
   border-radius: 48%;
-  background-color: white;
+  background-color: #242377;
   border: 3px solid lightgray;
   animation: ${move} 6s infinite linear;
 `;
@@ -347,21 +338,25 @@ const Start = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  gap: 50px;
+  gap: 10px;
+  color: white;
   /* padding-bottom: 300px; */
   & > button {
     border: none;
-    width: 80%;
-    height: 150px;
+    align-self: flex-start;
+    width: 40%;
+    height: 80px;
     border-radius: 10px;
-    background-color: whitesmoke;
+    background-color: #242377;
+    color: white;
     box-shadow: 0px 3px 4px gray;
+    border: 2px solid white;
     cursor: pointer;
     transition: 0.2s;
     font-size: 20px;
     font-weight: bolder;
     &:hover {
-      background-color: lightgray;
+      background-color: #42409e;
       transform: scale(1.02);
       transition: 0.2s;
     }
