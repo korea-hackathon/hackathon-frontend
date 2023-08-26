@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import NewHeader from "../components/newHeader";
 import PersonList from "../components/PersonList";
 import LineConnectingDots from "../components/path/Line";
+import PercentageAnimation from "../components/Percent";
 
 const dotsArray = [
   { x: 40, y: 100 * 1.6 },
@@ -17,36 +18,52 @@ const dotsArray = [
 ];
 
 const Dashboard = () => {
+  const [MEvariation, setMEVariation] = useState(0);
+  const [GEvariation, setGEVariation] = useState(0);
+
   const [users, setUsers] = useState([
     {
       id: 1,
-      name: "육기준",
-      role: "Captain",
+      name: "변정현",
+      role: "선장",
     },
     {
       id: 2,
-      name: "육기2준",
-      role: "Captain",
+      name: "부현수",
+      role: "운항사",
     },
     {
       id: 3,
-      name: "육기3준",
-      role: "Captain",
+      name: "이지후",
+      role: "기관사",
+    },
+    {
+      id: 4,
+      name: "박지민",
+      role: "정비사",
+    },
+    {
+      id: 5,
+      name: "육기준",
+      role: "정비사",
     },
   ]);
   const [arr, setArr] = useState([]);
-  
+
   function returnPerson() {
-    for(let i = 0; i<users.length; i++) {
+    for (let i = 0; i < users.length; i++) {
       setTimeout(() => {
-        setArr(arr => [...arr, <PersonList key={i} Text={users[i].name} Role={users[i].role} />]);
-      }, 200 * i)
+        setArr((arr) => [
+          ...arr,
+          <PersonList key={i} Text={users[i].name} Role={users[i].role} />,
+        ]);
+      }, 200 * i);
     }
   }
 
   useEffect(() => {
     returnPerson();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -165,9 +182,7 @@ const Dashboard = () => {
                 <img src="/imgs/Person.svg" alt="" />
                 승무원 정보
               </Title>
-              <div>
-                { arr }
-              </div>
+              <div>{arr}</div>
             </People>
             <Fan>
               <Title>
@@ -175,60 +190,92 @@ const Dashboard = () => {
                 내부 정보
               </Title>
               <Fans>
-                <MainFan RPM={100}>
+                <MainFan RPM={MEvariation * 1.5}>
                   <h1>M/E</h1>
                   <img src="/imgs/MEfan.svg" alt="" />
                   <div>
                     <div>
-                      <h1>RPM</h1> <h2>60%</h2>
+                      <h1>RPM</h1>{" "}
+                      <PercentageAnimation
+                        target={60}
+                        onPercentageChange={setMEVariation}
+                      />
                     </div>
                     <div>
-                      <h1>LOAD</h1> <h2>70%</h2>
+                      <h1>LOAD</h1>{" "}
+                      <PercentageAnimation
+                        target={70}
+                        onPercentageChange={() => {}}
+                      />
                     </div>
                   </div>
                 </MainFan>
                 <Line />
                 <SubFan>
                   <h1>G/E</h1>
-                  <SF RPM={100}>
+                  <SF RPM={GEvariation}>
                     <div>
                       <img src="/imgs/GEfan.svg" alt="" />
                       <h1>ENGINE-1</h1>
                     </div>
                     <div>
                       <div>
-                        <h1>RPM</h1> <h2>60%</h2>
+                        <h1>RPM</h1>{" "}
+                        <PercentageAnimation
+                          target={60}
+                          onPercentageChange={setGEVariation}
+                        />
                       </div>
                       <div>
-                        <h1>LOAD</h1> <h2>70%</h2>
+                        <h1>LOAD</h1>{" "}
+                        <PercentageAnimation
+                          target={70}
+                          onPercentageChange={() => {}}
+                        />
                       </div>
                     </div>
                   </SF>
-                  <SF RPM={100}>
+                  <SF RPM={GEvariation}>
                     <div>
                       <img src="/imgs/GEfan.svg" alt="" />
                       <h1>ENGINE-2</h1>
                     </div>
                     <div>
                       <div>
-                        <h1>RPM</h1> <h2>60%</h2>
+                        <h1>RPM</h1>{" "}
+                        <PercentageAnimation
+                          target={60}
+                          onPercentageChange={setGEVariation}
+                        />
                       </div>
                       <div>
-                        <h1>LOAD</h1> <h2>70%</h2>
+                        <h1>LOAD</h1>{" "}
+                        <PercentageAnimation
+                          target={70}
+                          onPercentageChange={() => {}}
+                        />
                       </div>
                     </div>
                   </SF>
-                  <SF RPM={100}>
+                  <SF RPM={GEvariation}>
                     <div>
                       <img src="/imgs/GEfan.svg" alt="" />
                       <h1>ENGINE-3</h1>
                     </div>
                     <div>
                       <div>
-                        <h1>RPM</h1> <h2>60%</h2>
+                        <h1>RPM</h1>{" "}
+                        <PercentageAnimation
+                          target={60}
+                          onPercentageChange={setGEVariation}
+                        />
                       </div>
                       <div>
-                        <h1>LOAD</h1> <h2>70%</h2>
+                        <h1>LOAD</h1>{" "}
+                        <PercentageAnimation
+                          target={70}
+                          onPercentageChange={() => {}}
+                        />
                       </div>
                     </div>
                   </SF>
@@ -244,7 +291,10 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <h1>Remain</h1>
-                      <h2>50%</h2>
+                      <PercentageAnimation
+                        target={50}
+                        onPercentageChange={() => {}}
+                      />
                     </div>
                   </FuelBox>
                 </Fuel>
@@ -270,6 +320,18 @@ const WeatherDetail = styled.div`
 const Rotating = keyframes`
   100% {
     transform: rotate(360deg);
+  }
+`;
+
+const Big = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 `;
 
@@ -478,11 +540,12 @@ const MainFan = styled.div`
   margin: 0;
   width: 20%;
   height: 100%;
+  margin-right: 20px;
   & > h1 {
     margin: 0;
   }
   & > img {
-    animation: ${Rotating} ${(props) => 50 / props.RPM}s linear infinite;
+    animation: ${Rotating} ${(props) => 150 / props.RPM}s linear infinite;
     transform-origin: 50% 50%;
   }
   & > div {
@@ -540,13 +603,15 @@ const Fuel = styled.div`
   gap: 60px;
   height: 100%;
   box-sizing: border-box;
-  padding-left: 20px;
+  padding-left: 40px;
   padding-right: 20px;
+
   & > h1 {
     margin: 0;
   }
   & > img {
     margin-right: -21px;
+    animation: ${Big} 2s infinite;
   }
 `;
 
