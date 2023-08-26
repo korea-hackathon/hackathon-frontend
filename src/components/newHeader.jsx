@@ -16,6 +16,13 @@ function NewHeader() {
             <SubTitle>Ship Quest Guide</SubTitle>
           </TitleBox>
         </MainBox>
+        <HomeBox
+          onClick={() => {
+            onLink("/main");
+          }}>
+          <Img2 src='imgs/home.png' />
+          <div>메인 페이지</div>
+        </HomeBox>
         <DashBoardBox
           onClick={() => {
             onLink("/dashBoard");
@@ -88,6 +95,23 @@ const Img2 = styled.img`
   height: 20px;
   margin-left: 10px;
   transform: ${({ open }) => (open ? "rotate(180deg)" : "null")};
+`;
+
+const HomeBox = styled.div`
+  cursor: pointer;
+  width: 320px;
+  height: 60px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  margin-left: 20px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  div {
+    margin-left: 10px;
+    font-size: 20px;
+  }
 `;
 
 const DashBoardBox = styled.div`
