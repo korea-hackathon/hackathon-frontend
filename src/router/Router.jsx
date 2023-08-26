@@ -12,6 +12,7 @@ const Router = () => {
         <Route path="/" element={<Login />} />
         <Route path="/alram" element={<AlramPage />} />
         <Route path="/todo" element={<TodoPage />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
