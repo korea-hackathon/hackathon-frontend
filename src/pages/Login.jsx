@@ -10,54 +10,160 @@ export const Login = () => {
       setStart(false);
     }
   };
-
-  return (
-    <Wrapper>
-      <Modal Start={start} onClick={clickModal} id="Modal">
-        {start ? (
-          <Container>
-            <Logo>
-              <img src="/imgs/LogoBack.svg" alt="" />
-            </Logo>
-            <Inputs>
-              <Input type="text" placeholder="이름을 입력하세요" />
-              <Input type="password" placeholder="직책을 입력하세요" />
-            </Inputs>
-            <Enter>
+  if (matchMedia("screen and (min-width: 1024px)").matches) {
+    return (
+      <Wrapper>
+        <Modal Start={start} onClick={clickModal} id="Modal">
+          {start ? (
+            <Container>
+              <Logo>
+                <img src="/imgs/LogoBack.svg" alt="" />
+              </Logo>
+              <Inputs>
+                <Input type="text" placeholder="이름을 입력하세요" />
+                <RoleInput>
+                  <option>역할을 입력하세요</option>
+                  <option>선장</option>
+                  <option>정비원</option>
+                  <option>운항사</option>
+                  <option>기관사</option>
+                  <option>항해사</option>
+                </RoleInput>
+                <RoleInputBorder></RoleInputBorder>
+              </Inputs>
               <Link to="/main" style={{ textDecoration: "none" }}>
-                <LoginText>로그인</LoginText>
+                <Enter>
+                  <LoginText>로그인</LoginText>
+                </Enter>
               </Link>
-            </Enter>
-          </Container>
-        ) : (
-          <Start>
-            <div>
-              <h1>
-                내 선박 정보,
-                <br />
-                SQG에서 확인하세요!
-              </h1>
-              <h2>
-                Lorem Ipsum Dollar 122345
-                <br />
-                54321 Dollar Ipsum Lorem
-              </h2>
-            </div>
-            <button onClick={() => setStart(true)}>
-              지금 바로 시작하세요!
-            </button>
-            <DuckWrapper active={true}>
-              <Duck src="./imgs/duck.png" alt="러버덕" />
-            </DuckWrapper>
-          </Start>
-        )}
-      </Modal>
-      <Wave1 />
-      <Wave2 />
-      <Wave3 />
-    </Wrapper>
-  );
+            </Container>
+          ) : (
+            <Start>
+              <div>
+                <h1>
+                  내 선박 정보,
+                  <br />
+                  SQG에서 확인하세요!
+                </h1>
+                <h2>
+                  당신을 위한 선박 서비스
+                  <br />
+                  SQG, 지금 시작해보세요!
+                </h2>
+              </div>
+              <button onClick={() => setStart(true)}>
+                지금 바로 시작하세요!
+              </button>
+              <DuckWrapper active={true}>
+                <Duck src="./imgs/duck.png" alt="러버덕" />
+              </DuckWrapper>
+            </Start>
+          )}
+        </Modal>
+        <Wave1 />
+        <Wave2 />
+        <Wave3 />
+      </Wrapper>
+    );
+  } else {
+    return (
+      <M_Container>
+        <M_Logo src="imgs/mobailLogo.svg" alt="logo" />
+        <M_SubText>더 효율적인 선박 운항을 위해</M_SubText>
+        <M_flexBox>
+          <M_nameInput type="text" placeholder="이름" />
+          <M_roleInput>
+            <option>역할을 입력하세요</option>
+            <option>선장</option>
+            <option>정비원</option>
+            <option>운항사</option>
+            <option>기관사</option>
+            <option>항해사</option>
+          </M_roleInput>
+          <M_roleInputBorder></M_roleInputBorder>
+        </M_flexBox>
+      </M_Container>
+    );
+  }
 };
+
+const M_Logo = styled.img`
+  margin-top: 55px;
+  margin-left: 31px;
+`;
+
+const M_Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: #252525;
+`;
+
+const RoleInput = styled.select`
+  background-color: transparent;
+  margin-top: 10px;
+  border: 1px solid black;
+  width: 400px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const RoleInputBorder = styled.div`
+  background: black;
+  width: 400px;
+  height: 1px;
+  position: absolute;
+  top: 63%;
+`;
+
+const M_roleInput = styled.select`
+  width: 290px;
+  border-bottom: 1px solid #b9b9b9;
+  background-color: transparent;
+  margin-top: 50px;
+  border: none;
+  border-radius: 0;
+  color: #b9b9b9;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+`;
+
+const M_roleInputBorder = styled.div`
+  width: 290px;
+  height: 1px;
+  background-color: #b9b9b9;
+`;
+
+const M_flexBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const M_SubText = styled.div`
+  color: #fff;
+  font-family: Pretendard Variable sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 34px;
+`;
+
+const M_nameInput = styled.input`
+  margin-top: 70px;
+  width: 290px;
+  border-bottom: 1px solid #b9b9b9;
+  background-color: transparent;
+  color: white;
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -66,18 +172,6 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   background-color: rgba(88, 202, 255, 0.8);
-`;
-
-const DuckAnimation = keyframes`
-  0% {
-    transform: translateY(100px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(0px) rotate(180deg);
-  }
-  100% {
-    transform: translateY(100px) rotate(360deg);
-  }
 `;
 
 const DuckAnimation2 = keyframes`
@@ -252,7 +346,7 @@ const Start = styled.div`
 `;
 
 const Enter = styled.button`
-  width: 70%;
+  width: 400px;
   height: 50px;
   border-radius: 15px;
   border: none;
