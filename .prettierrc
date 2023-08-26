@@ -1,0 +1,3 @@
+{
+  "quoteProps": "consistent", // 객체 속성에 쿼테이션 적용 방식
+}
