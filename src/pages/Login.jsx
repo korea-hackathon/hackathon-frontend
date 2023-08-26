@@ -32,11 +32,11 @@ export const Login = () => {
                 </RoleInput>
                 <RoleInputBorder></RoleInputBorder>
               </Inputs>
-              <Link to="/main" style={{ textDecoration: "none" }}>
-                <Enter>
+              <Enter>
+                <Link to="/main" style={{ textDecoration: "none" }}>
                   <LoginText>로그인</LoginText>
-                </Enter>
-              </Link>
+                </Link>
+              </Enter>
             </Container>
           ) : (
             <Start>
@@ -115,17 +115,25 @@ const M_Logo = styled.img`
 `;
 
 const M_Container = styled.div`
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    rgba(255, 255, 255, 0.66) 33.85%,
+    rgba(255, 255, 255, 0.31) 69.27%,
+    #cad6ff 100%
+  );
   width: 100%;
   height: 100vh;
-  background-color: #252525;
 `;
 
 const RoleInput = styled.select`
+  font-size: 16px;
   background-color: transparent;
   margin-top: 10px;
   border: 1px solid black;
   width: 400px;
   border: none;
+  margin-top: 70px;
   &:focus {
     outline: none;
   }
@@ -135,8 +143,6 @@ const RoleInputBorder = styled.div`
   background: black;
   width: 400px;
   height: 1px;
-  position: absolute;
-  top: 63%;
 `;
 
 const M_roleInput = styled.select`
@@ -146,7 +152,8 @@ const M_roleInput = styled.select`
   margin-top: 50px;
   border: none;
   border-radius: 0;
-  color: #b9b9b9;
+  color: #242377;
+  font-size: 18px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -170,7 +177,7 @@ const M_flexBox = styled.div`
 `;
 
 const M_SubText = styled.div`
-  color: #fff;
+  color: #242377;
   font-family: Pretendard Variable sans-serif;
   font-size: 12px;
   font-style: normal;
@@ -180,11 +187,12 @@ const M_SubText = styled.div`
 `;
 
 const M_nameInput = styled.input`
+  font-size: 18px;
   margin-top: 70px;
   width: 290px;
   border-bottom: 1px solid #b9b9b9;
   background-color: transparent;
-  color: white;
+  color: #242377;
 `;
 
 const Wrapper = styled.div`
@@ -238,8 +246,13 @@ const Duck = styled.img`
   position: absolute;
 `;
 
-const LoginText = styled.span`
+const LoginText = styled.div`
   color: black;
+  width: 320px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const move = keyframes`
@@ -248,7 +261,7 @@ const move = keyframes`
   }
 `;
 
-const Wave1 = styled.div``
+const Wave1 = styled.div``;
 
 const Wave2 = styled.div`
   //첫 색 (제일 진한거)
@@ -302,6 +315,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   & > img {
@@ -315,7 +329,6 @@ const Inputs = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 100px;
   margin: 0;
   & > input {
     width: 80%;
@@ -326,6 +339,8 @@ const Inputs = styled.div`
 `;
 
 const Input = styled.input`
+  font-size: 16px;
+  margin-top: 50px;
   border-bottom: 1px solid black;
 `;
 
@@ -376,19 +391,20 @@ const Start = styled.div`
 `;
 
 const Enter = styled.button`
-  width: 400px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 330px;
+  width: 320px;
   height: 50px;
-  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
-  background-color: lightgray;
-  transition: 0.2s;
-  box-shadow: 0px 3px 4px gray;
-  font-size: 25px;
-  font-weight: bolder;
-  margin: 0;
-  /* color: black; */
+  border-radius: 4px;
+  background-color: #8091e8;
   &:hover {
-    background-color: gray;
+    background-color: #6573b6;
     transition: 0.2s;
   }
 `;
