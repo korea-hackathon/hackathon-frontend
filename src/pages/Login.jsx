@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { css } from "styled-components";
 
 export const Login = () => {
   const [start, setStart] = useState(false);
@@ -11,17 +13,21 @@ export const Login = () => {
 
   return (
     <Wrapper>
-      <Modal Start={start} onClick={clickModal} id='Modal'>
+      <Modal Start={start} onClick={clickModal} id="Modal">
         {start ? (
           <Container>
             <Logo>
-              <img src='/imgs/LogoBack.svg' alt='' />
+              <img src="/imgs/LogoBack.svg" alt="" />
             </Logo>
             <Inputs>
-              <Input type='text' placeholder='아이디를 입력하세요' />
-              <Input type='password' placeholder='비밀번호를 입력하세요' />
+              <Input type="text" placeholder="이름을 입력하세요" />
+              <Input type="password" placeholder="직책을 입력하세요" />
             </Inputs>
-            <Enter>로그인</Enter>
+            <Enter>
+              <Link to="/main" style={{ textDecoration: "none" }}>
+                <LoginText>로그인</LoginText>
+              </Link>
+            </Enter>
           </Container>
         ) : (
           <Start>
@@ -40,6 +46,9 @@ export const Login = () => {
             <button onClick={() => setStart(true)}>
               지금 바로 시작하세요!
             </button>
+            <DuckWrapper active={true}>
+              <Duck src="./imgs/duck.png" alt="러버덕" />
+            </DuckWrapper>
           </Start>
         )}
       </Modal>
@@ -59,6 +68,52 @@ const Wrapper = styled.div`
   background-color: rgba(88, 202, 255, 0.8);
 `;
 
+const DuckAnimation = keyframes`
+  0% {
+    transform: translateY(100px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(100px) rotate(360deg);
+  }
+`;
+
+const DuckAnimation2 = keyframes`
+  0% {
+    transform: translateX(300px) translateY(100px);
+  }
+ 
+  50% {
+    transform: translateX(-300px) translateY(0);
+  }
+  100% {
+    transform: translateX(300px) translateY(100px);
+  }
+`;
+
+const DuckWrapper = styled.div`
+  ${(props) =>
+    props.active &&
+    css`
+      animation: ${DuckAnimation2} 5s infinite linear;
+    `}
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+`;
+
+const Duck = styled.img`
+  width: 200px;
+  height: 200px;
+  position: absolute;
+`;
+
+const LoginText = styled.span`
+  color: black;
+`;
+
 const move = keyframes`
 	100% {
 		transform: rotate(360deg);
@@ -68,8 +123,8 @@ const move = keyframes`
 const Wave1 = styled.div`
   z-index: 1;
   top: -350%;
-  width: 4000px;
-  height: 4000px;
+  width: 4250px;
+  height: 4250px;
   position: absolute;
   border-radius: 45%;
   background-color: rgba(54, 191, 255, 0.8);
@@ -80,8 +135,8 @@ const Wave2 = styled.div`
   //첫 색 (제일 진한거)
   z-index: 2;
   top: -370%;
-  width: 4000px;
-  height: 4000px;
+  width: 4250px;
+  height: 4250px;
   position: absolute;
   border-radius: 46%;
   background-color: rgba(14, 183, 250, 0.8);
@@ -92,8 +147,8 @@ const Wave3 = styled.div`
   //하얀색
   z-index: 4;
   top: -380%;
-  width: 4000px;
-  height: 4000px;
+  width: 4250px;
+  height: 4250px;
   position: absolute;
   border-radius: 48%;
   background-color: white;
@@ -207,6 +262,7 @@ const Enter = styled.button`
   font-size: 25px;
   font-weight: bolder;
   margin: 0;
+  /* color: black; */
   &:hover {
     background-color: gray;
     transition: 0.2s;
