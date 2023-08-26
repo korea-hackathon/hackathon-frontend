@@ -32,11 +32,11 @@ export const Login = () => {
                 </RoleInput>
                 <RoleInputBorder></RoleInputBorder>
               </Inputs>
-              <Link to="/main" style={{ textDecoration: "none" }}>
-                <Enter>
+              <Enter>
+                <Link to="/main" style={{ textDecoration: "none" }}>
                   <LoginText>로그인</LoginText>
-                </Enter>
-              </Link>
+                </Link>
+              </Enter>
             </Container>
           ) : (
             <Start>
@@ -127,11 +127,13 @@ const M_Container = styled.div`
 `;
 
 const RoleInput = styled.select`
+  font-size: 16px;
   background-color: transparent;
   margin-top: 10px;
   border: 1px solid black;
   width: 400px;
   border: none;
+  margin-top: 70px;
   &:focus {
     outline: none;
   }
@@ -141,8 +143,6 @@ const RoleInputBorder = styled.div`
   background: black;
   width: 400px;
   height: 1px;
-  position: absolute;
-  top: 63%;
 `;
 
 const M_roleInput = styled.select`
@@ -246,8 +246,13 @@ const Duck = styled.img`
   position: absolute;
 `;
 
-const LoginText = styled.span`
+const LoginText = styled.div`
   color: black;
+  width: 320px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const move = keyframes`
@@ -310,6 +315,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   & > img {
@@ -323,7 +329,6 @@ const Inputs = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 100px;
   margin: 0;
   & > input {
     width: 80%;
@@ -334,6 +339,8 @@ const Inputs = styled.div`
 `;
 
 const Input = styled.input`
+  font-size: 16px;
+  margin-top: 50px;
   border-bottom: 1px solid black;
 `;
 
@@ -384,19 +391,20 @@ const Start = styled.div`
 `;
 
 const Enter = styled.button`
-  width: 400px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 330px;
+  width: 320px;
   height: 50px;
-  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
-  background-color: lightgray;
-  transition: 0.2s;
-  box-shadow: 0px 3px 4px gray;
-  font-size: 25px;
-  font-weight: bolder;
-  margin: 0;
-  /* color: black; */
+  border-radius: 4px;
+  background-color: #8091e8;
   &:hover {
-    background-color: gray;
+    background-color: #6573b6;
     transition: 0.2s;
   }
 `;
