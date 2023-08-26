@@ -46,7 +46,7 @@ function Mobile() {
       id: 5,
     },
     {
-      title: "선박 기계 수리, 교체",
+      title: "선박 기계 수리, 교체F",
       content: "이상이 있는 선박의 기계를 수리해 주세요",
       type: false,
       success: false,
@@ -63,8 +63,12 @@ function Mobile() {
       setTodo([...newTodo]);
     }, 220);
     setTimeout(() => {
-      setTodo(todo.filter((element) => element.id != id));
+      const filter = newTodo.filter((element) => element.success != 2);
+      filter.map((element, index) => (element.id = index));
+      setTodo(filter);
     }, 1000);
+
+    clearTimeout();
   };
 
   return (
@@ -85,7 +89,7 @@ function Mobile() {
       </Task>
       <TodoBox>
         {todo.map((element) => (
-          <Todo warn={element.type} success={element.success}>
+          <Todo warn={element.type} success={element.success} key={element.id}>
             <TextBox>
               <span>{element.title}</span>
               <br />
