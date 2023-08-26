@@ -224,7 +224,7 @@ const DuckWrapper = styled.div`
   ${(props) =>
     props.active &&
     css`
-      animation: ${DuckAnimation2} 5s infinite linear;
+      animation: ${DuckAnimation2} 6s infinite linear;
     `}
   width: 200px;
   height: 200px;
