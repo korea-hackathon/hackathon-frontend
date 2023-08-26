@@ -14,6 +14,11 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     outline: 0;
   }
+
+  @font-face {
+    font-family: Pretendard;
+    src: url(@assets/fonts/Pretendard-Regular.woff) format(woff);
+  }
 `;
 
 export default GlobalStyle;
