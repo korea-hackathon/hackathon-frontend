@@ -76,7 +76,7 @@ export const Login = () => {
           <M_roleInput>
             <option>역할을 입력하세요</option>
             <option>선장</option>
-            <option>정비원</option>
+            <option>정비사</option>
             <option>운항사</option>
             <option>기관사</option>
             <option>항해사</option>
