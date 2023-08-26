@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const LineConnectingDots = ({ dots, pShipPos }) => {
   const lineStyle = {
-    stroke: "#B3DBFF",
+    stroke: "#1E6BC5",
     strokeWidth: 3,
   };
 
@@ -35,7 +35,9 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
         cx={dot.x}
         cy={dot.y}
         r={12.5}
-        fill={animationProgress >= index ? "#B3DBFF" : "transparent"}
+        fill={animationProgress >= index ? "#fff" : "#fff"}
+        stroke="#1E6BC5"
+        stroke-width="3"
       />
     ));
 
@@ -53,7 +55,7 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
       );
     }
 
-    return [...dotComponents, ...lineComponents];
+    return [, ...lineComponents, ...dotComponents];
   };
 
   const [shipPosition, setShipPosition] = useState({

@@ -70,12 +70,18 @@ export default PresentCondition;
 const D_Body = styled.div`
   width: 100vw;
   height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    rgba(255, 255, 255, 0.95) 79.69%,
+    rgba(227, 243, 255, 0.88) 100%
+  );
 `;
 
 const D_Container = styled.div`
   width: 1920px;
   height: 1080px;
-  background: white;
+  background: linear-gradient(180deg, rgba(248, 248, 248, 0.88) 0%, #fff 9.38%);
   position: relative;
 `;
 
@@ -90,7 +96,8 @@ const D_DownContainer = styled.div`
   left: 157px;
   top: 540px;
   border-radius: 40px;
-  background: rgba(179, 219, 255, 0.71);
+  background: #fff;
+  border: 5px #1e6bc5 solid;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
@@ -108,7 +115,6 @@ const D_PathContainer = styled.div`
   width: 1920px;
   height: 500px;
   flex-shrink: 0;
-  background: #76beff;
 `;
 
 const D_PathFlag = styled.img`
@@ -121,7 +127,7 @@ const D_PathFlag = styled.img`
 
 const D_StpText = styled.span`
   color: #000;
-  font-family: Noto Serif KR;
+  font-family: Pretendard;
   font-size: 40px;
   left: 88px;
   position: relative;
@@ -144,7 +150,7 @@ const M_Body = styled.div`
 
 const M_PathText = styled.span`
   display: inline-block;
-  font-family: "Noto Serif KR", serif;
+  font-family: Pretentard;
   font-size: 16px;
   margin-left: 30px;
   margin-top: 70px;
@@ -153,7 +159,7 @@ const M_PathText = styled.span`
 
 const M_EtaText = styled.span`
   display: inline-block;
-  font-family: "Noto Serif KR", serif;
+  font-family: Pretentard;
   font-size: 16px;
   margin-left: 70px;
   margin-top: 482px;
