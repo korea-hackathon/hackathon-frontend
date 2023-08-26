@@ -10,40 +10,52 @@ function NewHeader() {
     <>
       <Body open={open}>
         <MainBox>
-          <Img1 src='imgs/Logo.svg' />
+          <Img1 src="imgs/Logo.svg" />
           <TitleBox>
             <Title>SQG</Title>
             <SubTitle>Ship Quest Guide</SubTitle>
           </TitleBox>
         </MainBox>
-        <HomeBox
+        <Box
           onClick={() => {
             onLink("/main");
-          }}>
-          <Img2 src='imgs/home.png' />
+          }}
+        >
+          <Img2 src="imgs/home.png" />
           <div>메인 페이지</div>
-        </HomeBox>
-        <DashBoardBox
+        </Box>
+        <Box
           onClick={() => {
             onLink("/dashBoard");
-          }}>
-          <Img2 src='imgs/DashBoard.svg' />
+          }}
+        >
+          <Img2 src="imgs/DashBoard.svg" />
           <div>대시보드</div>
-        </DashBoardBox>
-        <NavigatorBox
+        </Box>
+        <Box
           onClick={() => {
-            onLink("/condition");
-          }}>
-          <Img2 src='imgs/Group.svg' />
-          <div>이동 현황 표시</div>
-        </NavigatorBox>
+            onLink("/alram");
+          }}
+        >
+          <Img2 src="imgs/bell.png" />
+          <div>알림</div>
+        </Box>
+        <Box
+          onClick={() => {
+            onLink("/todo");
+          }}
+        >
+          <Img2 src="imgs/check-circle.png" />
+          <div>할 일</div>
+        </Box>
       </Body>
       <Btn
         onClick={() => {
           setOpen(!open);
         }}
-        open={open}>
-        <Img2 src='imgs/right-arrow.png' open={open} />
+        open={open}
+      >
+        <Img2 src="imgs/right-arrow.png" open={open} />
       </Btn>
     </>
   );
@@ -97,45 +109,11 @@ const Img2 = styled.img`
   transform: ${({ open }) => (open ? "rotate(180deg)" : "null")};
 `;
 
-const HomeBox = styled.div`
+const Box = styled.div`
   cursor: pointer;
   width: 320px;
   height: 60px;
-  background-color: #f0f0f0;
-  border-radius: 15px;
-  margin-left: 20px;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  div {
-    margin-left: 10px;
-    font-size: 20px;
-  }
-`;
-
-const DashBoardBox = styled.div`
-  cursor: pointer;
-  width: 320px;
-  height: 60px;
-  background-color: #f0f0f0;
-  border-radius: 15px;
-  margin-left: 20px;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  div {
-    margin-left: 10px;
-    font-size: 20px;
-  }
-`;
-
-const NavigatorBox = styled.div`
-  cursor: pointer;
-  width: 320px;
-  height: 60px;
-  background-color: #f0f0f0;
+  background-color: #f9f9f9;
   border-radius: 15px;
   margin-left: 20px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);

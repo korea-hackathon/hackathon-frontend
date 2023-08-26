@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PresentCondition from "../pages/PresentCondition";
 import { Login } from "../pages/Login";
 import Quest from "../pages/Quest";
-import InnerInfo from "../pages/InnerInfo";
+import AlramPage from "../pages/alram";
+import TodoPage from "../pages/todo";
 
 const Router = () => {
   return (
@@ -10,8 +10,8 @@ const Router = () => {
       <Routes>
         <Route path="/Main" element={<Quest />} />
         <Route path="/" element={<Login />} />
-        <Route path="/Condition" element={<PresentCondition />} />
-        <Route path="/InnerInfo" element={<InnerInfo />} />
+        <Route path="/alram" element={<AlramPage />} />
+        <Route path="/todo" element={<TodoPage />} />
       </Routes>
     </BrowserRouter>
   );
