@@ -14,13 +14,13 @@ const SvgPos = styled.svg`
   }
 `;
 
-const LineConnectingDots = ({ dots, pShipPos }) => {
+const LineConnectingDots = ({ dots, shipPos }) => {
   const lineStyle = {
     stroke: "#1E6BC5",
     strokeWidth: 3,
     strokeDasharray: 1,
-    strokeDashoffset: 1,
-    animation: "dash 5s linear alternate infinite",
+    strokeDashoffset: 0,
+    animation: "dash 200ms linear",
   };
 
   const [animationProgress, setAnimationProgress] = useState(0);
@@ -32,7 +32,7 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
       }
     };
 
-    const animationInterval = setInterval(animate, 1000); // Adjust the interval as needed
+    const animationInterval = setInterval(animate, 200); // Adjust the interval as needed
 
     return () => {
       clearInterval(animationInterval);
@@ -46,8 +46,15 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
         cx={dot.x}
         cy={dot.y}
         r={12.5}
-        fill={animationProgress >= index ? "#fff" : "#fff"}
-        stroke="#1E6BC5"
+        // fill={animationProgress >= index ? "#fff" : "white"}
+        fill={
+          shipPos === index
+            ? animationProgress >= index
+              ? "#1e6bc5"
+              : "#fff"
+            : "white"
+        }
+        stroke={animationProgress >= index ? "#1E6BC5" : "white"}
         strokeWidth="3"
       />
     ));
@@ -62,6 +69,7 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
           x2={dots[i + 1].x}
           y2={dots[i + 1].y}
           style={lineStyle}
+          pathLength="1"
         />
       );
     }
@@ -79,12 +87,10 @@ const LineConnectingDots = ({ dots, pShipPos }) => {
       if (animationProgress < dots.length - 1) {
         setAnimationProgress(animationProgress + 1);
         const nextDot = dots[animationProgress + 1];
-        setShipPosition({ x: nextDot.x, y: nextDot.y });
-        pShipPos({ x: nextDot.x, y: nextDot.y });
       }
     };
 
-    const animationInterval = setInterval(animate, 1000); // Adjust the interval as needed
+    const animationInterval = setInterval(animate, 200); // Adjust the interval as needed
 
     return () => {
       clearInterval(animationInterval);
