@@ -32,22 +32,6 @@ function NewHeader() {
           <Img2 src="imgs/DashBoard.svg" />
           <div>대시보드</div>
         </Box>
-        <Box
-          onClick={() => {
-            onLink("/alram");
-          }}
-        >
-          <Img2 src="imgs/bell.png" />
-          <div>알림</div>
-        </Box>
-        <Box
-          onClick={() => {
-            onLink("/todo");
-          }}
-        >
-          <Img2 src="imgs/check-circle.png" />
-          <div>할 일</div>
-        </Box>
       </Body>
       <Btn
         onClick={() => {
